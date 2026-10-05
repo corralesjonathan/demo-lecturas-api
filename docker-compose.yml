@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: laravel-app
+    image: laravel-api-demo
     container_name: laravel-app
     restart: unless-stopped
     tty: true
@@ -20,7 +20,7 @@ services:
     container_name: laravel-nginx
     restart: unless-stopped
     ports:
-      - "8000:80"
+      - "80:80" # Abrimos el puerto 80 estándar para tráfico HTTP web
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
@@ -34,9 +34,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: demo_lecturas
-      POSTGRES_USER: demo_lecturas_user
-      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: laravel_db
+      POSTGRES_USER: laravel_user
+      POSTGRES_PASSWORD: un_password_seguro_para_produccion
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
