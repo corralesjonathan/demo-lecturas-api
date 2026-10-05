@@ -34,9 +34,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: laravel_db
-      POSTGRES_USER: laravel_user
-      POSTGRES_PASSWORD: un_password_seguro_para_produccion
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
